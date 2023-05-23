@@ -1,1 +1,3 @@
-"# PreEntrega1Ayala" 
+# Emporio Retro
+
+Built using React + Vite + React-Bootstrap
