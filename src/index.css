@@ -1,0 +1,45 @@
+body.darkTheme {
+  background-color: #2a2f4d;
+  color: #fff;
+}
+
+.mainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 56px);
+}
+
+.main h1, .main h2 {
+  text-align: center;
+}
+
+.shoppingCart {
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  flex: 1 0 auto;
+  align-items: center;
+  position: relative;
+  margin-right: 5px;
+}
+
+.shoppingCart a {
+  color: lightgray;
+  transition: ease-in-out 200ms;
+}
+
+.shoppingCart a:hover {
+  color: white;
+}
+
+.shoppingCart a .itemCounter {
+  top: 0px;
+  right: -8px;
+  position: absolute;
+  border-radius: 100%;
+  background-color: rgba(224, 23, 23, 0.9);
+  padding: 0 5px;
+  text-align: center;
+  font-size: 12px;
+}
