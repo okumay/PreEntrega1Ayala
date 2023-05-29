@@ -11,7 +11,7 @@ const NavBar = () => (
         <Nav.Link href="#home">Inicio</Nav.Link>
         <Nav.Link href="#products">Productos</Nav.Link>
         <Nav.Link href="#contact-us">Contacto</Nav.Link>
-        <CartWidget></CartWidget>
+        <CartWidget />
       </Nav>
     </Container>
   </Navbar>

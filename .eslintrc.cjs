@@ -29,5 +29,12 @@ module.exports = {
   rules: {
     "react/prop-types": 0,
     "react/react-in-jsx-scope": 0,
+    "react/self-closing-comp": [
+      "error",
+      {
+        component: true,
+        html: true,
+      },
+    ],
   },
 };
