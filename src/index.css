@@ -1,11 +1,8 @@
-.darkTheme .container-fluid {
+body {  
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
+	background-size: 4000% 4000%;
 	height: 100vh;
-  color: #fff;
-  margin: 0;
-  padding: 0;
+	animation: gradient 15s ease infinite;
 }
 
 @keyframes gradient {
@@ -20,44 +17,24 @@
 	}
 }
 
-
 .mainWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - 56px);
+  padding: 40px;
+}
+
+@media screen and (max-width: 450px) {
+	.mainWrapper {
+		padding: 20px;
+	}	
 }
 
 .main h1, .main h2 {
   text-align: center;
 }
 
-.shoppingCart {
-  color: white;
+.loading {
+	margin-top: 40px;
   display: flex;
-  justify-content: flex-end;
-  flex: 1 0 auto;
+  justify-content: center;
   align-items: center;
-  position: relative;
-  margin-right: 5px;
-}
-
-.shoppingCart a {
-  color: lightgray;
-  transition: ease-in-out 200ms;
-}
-
-.shoppingCart a:hover {
-  color: white;
-}
-
-.shoppingCart a .itemCounter {
-  top: 0px;
-  right: -8px;
-  position: absolute;
-  border-radius: 100%;
-  background-color: rgba(224, 23, 23, 0.9);
-  padding: 0 5px;
-  text-align: center;
-  font-size: 12px;
+  flex-direction: column;
 }

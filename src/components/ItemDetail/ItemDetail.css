@@ -1,0 +1,41 @@
+.item {
+  background: #fff;
+  padding: 20px;  
+  border-radius: 5px;
+}
+
+.item > .row {
+  padding: 20px;
+}
+
+.item img {
+  width: 100%;
+}
+
+.item .itemCount {
+  max-width: 200px;
+}
+
+.item .description {
+  font-style: italic;
+}
+
+.item .price {
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 767px) {
+  .item img {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .item {
+    border-radius: 0;
+  }
+}
+
+.toast-container {
+  margin-bottom: 20px;
+}

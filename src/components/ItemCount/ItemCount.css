@@ -1,0 +1,14 @@
+.item-count {
+  display: flex;
+}
+
+.item-count .add-remove-wrapper > * {
+  float: left;
+  margin-right: 10px;
+}
+
+.item-count .itemQty {
+  margin-bottom: 0;
+  line-height: 31px;
+  user-select: none;
+}
