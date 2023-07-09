@@ -1,44 +1,9 @@
-import { useEffect, useState } from "react";
 import { Item } from "../Item/Item";
-import "./ItemList.css";
-import {
-  getCategoryName,
-  getProducts,
-  getProductsByCategory,
-} from "../../assets/asyncMock";
 import { Container, Row, Spinner } from "react-bootstrap";
-import { useParams } from "react-router-dom";
 
-const ItemList = ({ greeting }) => {
-  const [items, setItems] = useState([]);
-  const [category, setCategory] = useState(null);
-  const { id } = useParams();
+import "./ItemList.css";
 
-  useEffect(() => {
-    if (id) {
-      setCategory(getCategoryName(id));
-      getProductsByCategory(id)
-        .then((res) => {
-          setItems(res);
-        })
-        .catch((error) => {
-          error.log(error);
-        });
-    } else {
-      getProducts()
-        .then((res) => {
-          setItems(res);
-        })
-        .catch((error) => {
-          error.log(error);
-        });
-    }
-    return () => {
-      setItems([]);
-      setCategory(null);
-    };
-  }, [id]);
-
+const ItemList = ({ greeting, items, category }) => {
   if (!items.length) {
     return (
       <div className="loading">
@@ -53,9 +18,9 @@ const ItemList = ({ greeting }) => {
   return (
     <Container fluid>
       {category ? (
-        <h1 className="itemListHeader">{category}</h1>
+        <h1 className="item-list-header">{category}</h1>
       ) : (
-        <h1 className="itemListHeader">Todos los productos</h1>
+        <h1 className="item-list-header">Todos los productos</h1>
       )}
       <Row className="item-list g-4 row-cols-xs-1 row-cols-md-2 row-cols-xl-4">
         {items.map((item) => (

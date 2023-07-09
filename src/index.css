@@ -17,20 +17,6 @@ body {
 	}
 }
 
-.mainWrapper {
-  padding: 40px;
-}
-
-@media screen and (max-width: 450px) {
-	.mainWrapper {
-		padding: 20px;
-	}	
-}
-
-.main h1, .main h2 {
-  text-align: center;
-}
-
 .loading {
 	margin-top: 40px;
   display: flex;

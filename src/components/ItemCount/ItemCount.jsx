@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
+
 import "./ItemCount.css";
 
 const ItemCount = ({ initial, stock, onAdd }) => {
@@ -12,28 +13,41 @@ const ItemCount = ({ initial, stock, onAdd }) => {
   };
 
   const removeItem = () => {
-    if (itemCount > 0) {
+    if (itemCount > 1) {
       setItemCount(itemCount - 1);
     }
   };
 
   return (
     <div className="item-count">
-      <div className="add-remove-wrapper ">
+      <div className="add-remove-wrapper">
         <Button
           size="sm"
-          className="updateCart"
+          variant="light"
+          className="update-cart decrease-qty"
           onClick={removeItem}
-          disabled={itemCount === 0 ? "disabled" : null}
+          disabled={itemCount < 2 ? "disabled" : null}
         >
           -
         </Button>
-        <p className="itemQty">{itemCount}</p>
+        <input
+          value={itemCount}
+          className="item-qty"
+          onChange={(e) => {
+            setItemCount(e.target.value);
+          }}
+          onFocus={(e) => e.target.select()}
+          onBlur={(e) => {
+            if (e.target.value < 2) setItemCount(1);
+            else if (e.target.value > stock) setItemCount(stock);
+          }}
+        />
         <Button
           size="sm"
-          className="updateCart"
+          variant="light"
+          className="update-cart increase-qty"
           onClick={addItem}
-          disabled={itemCount === stock ? "disabled" : null}
+          disabled={itemCount >= stock ? "disabled" : null}
         >
           +
         </Button>
@@ -41,7 +55,7 @@ const ItemCount = ({ initial, stock, onAdd }) => {
       <div>
         <Button
           size="sm"
-          className="addToCart"
+          className="add-to-cart"
           onClick={() => onAdd(itemCount)}
           disabled={!stock}
         >

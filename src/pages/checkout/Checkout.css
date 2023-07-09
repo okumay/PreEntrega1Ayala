@@ -1,0 +1,18 @@
+.checkout {
+  padding: 40px;
+}
+
+.checkout .products .row {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.checkout .buttons {
+  margin-top: 20px;
+}
+
+.checkout .buttons .btn {
+  width: 100%;
+}

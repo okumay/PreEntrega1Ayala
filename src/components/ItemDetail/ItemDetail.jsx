@@ -1,39 +1,34 @@
-import {
-  Col,
-  Container,
-  Image,
-  Modal,
-  Row,
-  Toast,
-  ToastContainer,
-} from "react-bootstrap";
+import { Button, Col, Container, Image, Modal, Row } from "react-bootstrap";
 import { ItemCount } from "../ItemCount/ItemCount";
-import "./ItemDetail.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getCategoryName } from "../../assets/asyncMock";
+import { CartContext } from "../../context/cart/CartContext";
 
-const ItemDetail = ({
-  id,
-  title,
-  price,
-  description,
-  imgUrl,
-  stock,
-  catId,
-}) => {
+import "./ItemDetail.css";
+
+const ItemDetail = ({ id, title, price, description, imgUrl, stock }) => {
   const [showModal, setShowModal] = useState(false);
-  const [category, setCategory] = useState(null);
-  const [showToast, setShowToast] = useState(false);
-  const [qty, setQty] = useState(null);
+  const [productAdded, setProductAdded] = useState(false);
+
+  const { addItem, isInCart } = useContext(CartContext);
+
+  const updateStock = (q) => {
+    const item = {
+      id,
+      title,
+      price,
+      imgUrl,
+    };
+
+    addItem(item, q);
+    setProductAdded(true);
+  };
 
   useEffect(() => {
-    let categoryName = getCategoryName(catId).toLowerCase();
-    if (qty === 1) {
-      categoryName = categoryName.match(/^(.*)(?:s)$/)[1];
+    if (isInCart(id)) {
+      setProductAdded(true);
     }
-    setCategory(categoryName);
-  }, [qty, catId]);
+  }, [id, isInCart]);
 
   return (
     <>
@@ -47,16 +42,47 @@ const ItemDetail = ({
           <Col xs={12} md={8}>
             <h1 className="title">{title}</h1>
             <p className="description">{description}</p>
-            <p className="price">${price}</p>
-            <ItemCount
-              className="itemCount"
-              initial={0}
-              stock={stock}
-              onAdd={(q) => {
-                setQty(q);
-                setShowToast(true);
-              }}
-            />
+            <p className="price">Precio: ${price}</p>
+            {stock ? (
+              <>
+                <p className="stock">
+                  Stock: {stock}u.
+                  {stock === 1 && <span> (Último disponible!)</span>}
+                </p>
+                {!productAdded ? (
+                  <ItemCount
+                    className="itemCount"
+                    initial={1}
+                    stock={stock}
+                    onAdd={(q) => {
+                      updateStock(q);
+                    }}
+                  />
+                ) : (
+                  <div className="item-added">
+                    <p>Tu item ya se encuentra en el carrito.</p>
+                    <Button
+                      as={Link}
+                      to="/checkout"
+                      variant="success"
+                      className="to-cart"
+                    >
+                      Ver carrito
+                    </Button>
+                    <Button as={Link} to="/" variant="primary">
+                      Seguir comprando
+                    </Button>
+                  </div>
+                )}{" "}
+              </>
+            ) : (
+              <>
+                <p className="stock no-stock">Sin stock</p>
+                <Button as={Link} variant="primary" to="/">
+                  Seguir comprando
+                </Button>
+              </>
+            )}
           </Col>
         </Row>
       </Container>
@@ -70,18 +96,6 @@ const ItemDetail = ({
           </Row>
         </Modal.Body>
       </Modal>
-      <ToastContainer position="bottom-center">
-        <Toast
-          show={showToast}
-          onClose={() => setShowToast(false)}
-          delay={2000}
-          autohide
-        >
-          <Toast.Body>
-            Agregaste {qty} {category} al carrito
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
     </>
   );
 };

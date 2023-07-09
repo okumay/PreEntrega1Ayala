@@ -1,17 +1,8 @@
-import { CartWidget } from "./CartWidget/CartWidget";
-import { ItemCount } from "./ItemCount/ItemCount";
-import { ItemDetailContainer } from "./ItemDetailContainer/ItemDetailContainer";
-import { ItemListContainer } from "./ItemListContainer/ItemListContainer";
-import { ItemList } from "./ItemList/ItemList";
-import { ItemDetail } from "./ItemDetail/ItemDetail";
-import { NavBar } from "./NavBar/NavBar";
-
-export {
-  CartWidget,
-  ItemCount,
-  ItemList,
-  ItemDetailContainer,
-  ItemListContainer,
-  ItemDetail,
-  NavBar,
-};
+export { CartWidget } from "./CartWidget/CartWidget";
+export { ItemCount } from "./ItemCount/ItemCount";
+export { ItemDetailContainer } from "./ItemDetailContainer/ItemDetailContainer";
+export { ItemListContainer } from "./ItemListContainer/ItemListContainer";
+export { ItemList } from "./ItemList/ItemList";
+export { ItemDetail } from "./ItemDetail/ItemDetail";
+export { NavBar } from "./NavBar/NavBar";
+export { Brief } from "./Brief/Brief";

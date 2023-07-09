@@ -1,26 +1,23 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
-import { getProductById } from "../../assets/asyncMock";
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { Spinner } from "react-bootstrap";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../services/firebase/firebaseConfig";
 
 const ItemDetailContainer = ({ greeting }) => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [item, setItem] = useState(null);
 
   useEffect(() => {
-    getProductById(id)
-      .then((res) => {
-        setItem(res);
-      })
-      .catch((error) => {
-        error.log(error);
+    if (slug) {
+      const q1 = query(collection(db, "items"), where("slug", "==", slug));
+      getDocs(q1).then((snapshot) => {
+        setItem({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() });
       });
-    return () => {
-      setItem(null);
-    };
-  }, [id]);
+    }
+  }, [slug]);
 
   if (!item) {
     return (

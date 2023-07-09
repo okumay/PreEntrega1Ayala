@@ -1,0 +1,14 @@
+.brief .img {
+  max-width: 100px;
+}
+
+.brief h2 {
+  font-size: 1.1em;
+  text-align: left;
+}
+
+.brief .total p {
+  font-size: 1.1em;
+  margin: 0;
+  text-align: right;
+}

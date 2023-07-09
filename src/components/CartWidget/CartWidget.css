@@ -1,4 +1,4 @@
-.shoppingCart {
+.shopping-cart {
   color: white;
   display: flex;
   justify-content: flex-end;
@@ -8,16 +8,16 @@
   margin-right: 5px;
 }
 
-.shoppingCart a {
+.shopping-cart a {
   color: lightgray;
   transition: ease-in-out 200ms;
 }
 
-.shoppingCart a:hover {
+.shopping-cart a:hover {
   color: white;
 }
 
-.shoppingCart a .itemCounter {
+.shopping-cart a .item-counter {
   top: 0px;
   right: -8px;
   position: absolute;

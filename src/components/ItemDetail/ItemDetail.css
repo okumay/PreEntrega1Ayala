@@ -24,6 +24,20 @@
   font-size: 1.2em;
 }
 
+.stock span {
+  font-style: italic;
+  font-size: .8em;
+  color: red;
+}
+
+.item-added p {
+  font-style: italic;
+}
+
+.item-added .to-cart {
+  margin-right: 10px;
+}
+
 @media screen and (max-width: 767px) {
   .item img {
     margin-bottom: 20px;
@@ -34,8 +48,4 @@
   .item {
     border-radius: 0;
   }
-}
-
-.toast-container {
-  margin-bottom: 20px;
 }

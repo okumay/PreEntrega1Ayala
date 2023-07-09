@@ -1,7 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Item = ({ id, title, price, imgUrl, stock }) => {
+const Item = ({ id, title, price, imgUrl, slug }) => {
   return (
     <div>
       <Card className="item" id={id}>
@@ -10,15 +10,9 @@ const Item = ({ id, title, price, imgUrl, stock }) => {
           <Card.Title className="title">{title}</Card.Title>
           <p className="price">${price}</p>
 
-          {!stock ? (
-            <Button variant="secondary" disabled>
-              Sin stock
-            </Button>
-          ) : (
-            <Button variant="primary" as={Link} to={`/item/${id}`}>
-              Ver detalle
-            </Button>
-          )}
+          <Button variant="primary" as={Link} to={`/item/${slug}`}>
+            Ver detalle
+          </Button>
         </Card.Body>
       </Card>
     </div>
