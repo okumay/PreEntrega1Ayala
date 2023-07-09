@@ -34,4 +34,4 @@ Una vez ingresados los datos, se le brindará al usuario el ID de la compra, que
 ![](src/assets/04-firebase.png)
 
 ## Demo del sitio
-<video src="src/assets/emporio-retro-demo.mp4" controls title="Title"></video>
+![](src/assets/ProyectoFinalDemo.gif)
